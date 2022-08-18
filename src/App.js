@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router'
+import CategoryItem from './components/category-item/category-item.component'
+
 import Directory from './components/directory/directotry.component'
 
 const App = () => {
@@ -29,7 +32,15 @@ const App = () => {
 		},
 	]
 
-	return <Directory categories={categories} />
+	return (
+		<Routes>
+			<Route path='/' element={<Directory categories={categories} />} />
+			<Route
+				path='/component'
+				element={<CategoryItem category={categories[1]} />}
+			/>
+		</Routes>
+	)
 }
 
 export default App
