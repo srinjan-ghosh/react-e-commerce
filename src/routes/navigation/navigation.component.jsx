@@ -2,7 +2,9 @@ import { Fragment, useContext } from 'react'
 import { Outlet, Link } from 'react-router-dom'
 
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
-import { UserContext } from '../../context/user.context'
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
+import CartIcon from '../../components/cart-icon/cart-icon.component'
+import { UserContext } from '../../contexts/user.context'
 import { signOutUser } from '../../utils/firebase/firebase.utils.js'
 
 import './navigation.styles.scss'
@@ -30,7 +32,9 @@ const Navigation = () => {
 							SIGN IN
 						</Link>
 					)}
+					<CartIcon />
 				</div>
+				<CartDropdown />
 			</div>
 			{/* all components will be renderd below the top component Navigation 
                 the placing of outlet determines the order in nested routing
