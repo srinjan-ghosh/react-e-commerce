@@ -1,25 +1,18 @@
-import { useContext, Fragment } from 'react'
-import CategoryPreview from '../../components/category-preview/category-preview.component'
-import ProductCard from '../../components/product-card/product-card.component'
+import { Routes, Route } from 'react-router-dom'
 
-import { CategoriesContext } from '../../contexts/categories.context'
+import CategoriesPreview from '../categories-preview/categories-preview.component'
+import Category from '../category/category.component'
 
 import './shop.styles.scss'
 
+// Shows the preview; also contains link to different categories
+// creating nested routes. but not in App.js; holds all the routes to children route
 const Shop = () => {
-	const { categoriesMap } = useContext(CategoriesContext)
-
 	return (
-		<div className='shop-container'>
-			{Object.keys(categoriesMap).map((title) => {
-				return (
-					<CategoryPreview
-						title={title}
-						products={categoriesMap[title]}
-					/>
-				)
-			})}
-		</div>
+		<Routes>
+			<Route index element={<CategoriesPreview />} />
+			<Route path=':category' element={<Category />} />
+		</Routes>
 	)
 }
 
