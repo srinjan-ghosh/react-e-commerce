@@ -75,6 +75,18 @@ export const CartProvider = ({ children }) => {
 		setCartTotal(value)
 	}, [cartItems])
 
+	const showCart = (componentName) => {
+		if (componentName === 'cartIcon' || componentName === 'cartDropdown') {
+			setIsCartOpen(true)
+		}
+	}
+
+	const closeCart = (componentName) => {
+		if (componentName === 'cartIcon' || componentName === 'cartDropdown') {
+			setIsCartOpen(false)
+		}
+	}
+
 	const addItemToCart = (product) =>
 		setCartItems(addCartItem(cartItems, product))
 
@@ -94,6 +106,8 @@ export const CartProvider = ({ children }) => {
 		removeItemFromCart,
 		clearItemFromCart,
 		cartTotal,
+		showCart,
+		closeCart,
 	}
 	return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
