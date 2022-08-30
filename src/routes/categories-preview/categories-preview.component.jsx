@@ -1,15 +1,13 @@
-import { useContext } from 'react'
+import { Fragment, useContext } from 'react'
 import CategoryPreview from '../../components/category-preview/category-preview.component'
 
 import { CategoriesContext } from '../../contexts/categories.context'
-
-import './categories-preview.styles.scss'
 
 const CategoriesPreview = () => {
 	const { categoriesMap } = useContext(CategoriesContext)
 
 	return (
-		<div className='category-preview-container'>
+		<Fragment>
 			{Object.keys(categoriesMap).map((title) => {
 				return (
 					<CategoryPreview
@@ -19,7 +17,7 @@ const CategoriesPreview = () => {
 					/>
 				)
 			})}
-		</div>
+		</Fragment>
 	)
 }
 
